@@ -57,6 +57,9 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'config.urls'
 
+LOCALE_PATHS = ['movies/locale']
+
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
