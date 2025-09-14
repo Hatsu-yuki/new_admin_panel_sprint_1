@@ -50,7 +50,6 @@ class PostgresSaver:
             self.logger.info(f"Closing connection to DB")
             self.connection.close()
 
-
     def save_all_data(self, gen_data: Generator, chunk_size: int = 10):
         self.logger.info(f"Starting to save all data, {chunk_size=}")
         for data in gen_data:
@@ -71,8 +70,6 @@ class PostgresSaver:
         self.logger.info(f"Data saved successfully")
 
 
-
-
 def load_from_sqlite(connection: sqlite3.Connection, pg_conn: _connection):
     postgres_saver = PostgresSaver(pg_conn)
     sqlite_extractor = SQLiteExtractor(connection)
@@ -85,4 +82,3 @@ if __name__ == '__main__':
     with (conn_context(settings.SQLITE_PATH) as sqlite_conn,
           closing(psycopg2.connect(**settings.DSL, cursor_factory=DictCursor)) as postgres_conn):
         load_from_sqlite(sqlite_conn, postgres_conn)
-
